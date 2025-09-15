@@ -3,113 +3,360 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fran's Research Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Han Mengfan's Research Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 4rem;
+            gap: 3rem;
+        }
+
+        .intro {
+            flex: 2;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .profile-container {
+            flex: 1;
+        }
+
+        .profile-img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .intro h1 {
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .action-buttons {
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            margin-right: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        /* Projects Section */
+        .project-section {
+            margin-bottom: 4rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .project-img-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            cursor: pointer;
+        }
+
+        .project-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-img:hover {
+            transform: scale(1.02);
+        }
+
+        .project-details {
+            padding: 2rem;
+        }
+
+        .project-title {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            color: #3498db;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            margin: 2rem auto;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-width: 1200px;
+            margin: 1rem auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-caption {
+            color: white;
+            text-align: center;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        .close {
+            position: fixed;
+            top: 15px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        /* Collaborations Section */
+        .collaborations {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .collaboration-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .collaboration-link {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column-reverse;
+            }
+
+            .profile-container {
+                width: 100%;
+            }
+
+            .action-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                margin-right: 0;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Research Portfolio</h1>
-            <div class="action-buttons">
-                <a href="mailto:your.email@example.com" class="btn">Email Me</a>
-                <a href="#" class="btn">View My CV</a>
+    <!-- Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content" id="modalContent">
+            <!-- Images will be inserted here -->
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="intro">
+                <h1>Hi! I am Han Mengfan</h1>
+                <p>I am a master student at UESTC, advised by Prof. Benjamin Becker. My research focuses on pharmacological modulation of human fear and attention using eye-tracking and fMRI methods.</p>
+                <p>I am passionate about investigating neural and cognitive mechanisms underlying human behavior and mental processes.</p>
+                <div class="action-buttons">
+                    <a href="mailto:waichiputao@163.com" class="btn btn-primary">Email Me</a>
+                    <a href="https://bululu1025.github.io/hanmengfan_CV.pdf" class="btn btn-secondary">View My CV</a>
+                </div>
+            </div>
+            <div class="profile-container">
+                <img src="https://bululu1025.github.io/image_fran/pic_fran.jpg" alt="Profile Picture" class="profile-img">
             </div>
         </div>
-    </header>
-
-    <main>
-        <!-- Introduction Section -->
-        <section id="intro" class="container">
-            <div class="intro-content">
-                <div class="profile-image">
-                    <img src="https://bululu1025.github.io/image_fran/pic_fran.jpg" alt="Fran's Photo">
-                </div>
-                <div class="intro-text">
-                    <h2>Hi! I'm Fran</h2>
-                    <p>I am a master student at UESTC, advised by Prof. Benjamin Becker. My research focuses on pharmacological modulation of human fear and attention using eye-tracking and fMRI methods.</p>
-                    <p>I am passionate about investigating neural and cognitive mechanisms underlying human behavior and mental processes.</p>
-                    <div class="highlight">
-                        <p>My strengths: innovative thinking and scientific visualization</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Projects Section -->
-        <section id="projects">
-            <div class="container">
-                <h2>Featured Projects</h2>
-                <div class="projects-grid">
-                    <!-- Project 1 -->
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="https://bululu1025.github.io/image_fran/Project1.png" alt="Project 1">
-                            <div class="project-overlay">
-                                <div class="stats-gallery">
-                                    <img src="https://bululu1025.github.io/image_fran/pupil.png" alt="Pupil Statistics">
-                                    <img src="https://bululu1025.github.io/image_fran/HMM.png" alt="HMM Analysis">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Fear Modulation Study</h3>
-                            <p>Developed innovative analysis approaches combining eye-tracking and fMRI data to uncover novel patterns in fear response modulation. My methodological innovation allowed us to identify previously overlooked temporal dynamics in pharmacological interventions.</p>
-                            <a href="https://www.medrxiv.org/content/10.1101/2025.05.18.25327885v1" target="_blank" class="project-link">View Preprint on medRxiv</a>
-                        </div>
-                    </div>
-
-                    <!-- Project 2 -->
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="https://bululu1025.github.io/image_fran/Project2.png" alt="Project 2">
-                        </div>
-                        <div class="project-info">
-                            <h3>Attention Mechanisms Research</h3>
-                            <p>Designed and implemented a novel experimental paradigm to study attentional bias in anxiety disorders. My approach combined computational modeling with psychophysiological measures, creating a more comprehensive assessment framework.</p>
-                            <p class="status">Manuscript in revision</p>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 -->
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="https://bululu1025.github.io/image_fran/Project3.png" alt="Project 3">
-                        </div>
-                        <div class="project-info">
-                            <h3>fMRI Analysis Pipeline</h3>
-                            <p>Created an optimized processing pipeline for fear conditioning fMRI data that improved signal detection by 22%. My innovative preprocessing steps significantly enhanced the sensitivity of our analyses to pharmacological effects.</p>
-                            <p class="status">Manuscript in preparation</p>
-                        </div>
-                    </div>
+        <div class="project-section">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-img-container" data-project="1">
+                    <img src="https://bululu1025.github.io/image_fran/Project1.png" alt="Project 1" class="project-img">
+                </div>
+                <div class="project-details">
+                    <h2 class="project-title">Research on Losartan and AVP Response Patterns</h2>
+                    <p>尝试找到Losartan和AVP在威胁逼近过程中各自的响应模式特点...</p>
+                    <a href="https://www.medrxiv.org/content/10.1101/2025.05.18.25327885v1" class="project-link">View Preprint →</a>
                 </div>
             </div>
-        </section>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-img-container" data-project="2">
+                    <img src="https://bululu1025.github.io/image_fran/Project2.png" alt="Project 2" class="project-img">
+                </div>
+                <div class="project-details">
+                    <h2 class="project-title">AVP Specific Regulation Study</h2>
+                    <p>AVP的特异性调节作用</p>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <div class="project-img-container" data-project="3">
+                    <img src="https://bululu1025.github.io/image_fran/Project3.png" alt="Project 3" class="project-img">
+                </div>
+                <div class="project-details">
+                    <h2 class="project-title">Losartan Specific Regulation Study</h2>
+                    <p>Losartan的特异性调节作用，论文修改中，预约2025年10月投递</p>
+                </div>
+            </div>
+        </div>
 
         <!-- Collaborations Section -->
-        <section id="collaborations">
-            <div class="container">
-                <h2>Collaborative Publications</h2>
-                <div class="collab-list">
-                    <div class="collab-item">
-                        <h3>Multisensory Integration in Anxiety</h3>
-                        <p>Contributing author - analyzed eye-tracking data and created visualization frameworks</p>
-                        <a href="https://www.medrxiv.org/content/10.1101/2025.08.24.25334303v1" target="_blank">View Preprint on medRxiv</a>
-                    </div>
-                    <div class="collab-item">
-                        <h3>Neurodevelopmental Markers of Fear Learning</h3>
-                        <p>Contributing author - developed statistical models and result visualizations</p>
-                        <a href="https://www.medrxiv.org/content/10.1101/2025.04.06.25325353v1" target="_blank">View Preprint on medRxiv</a>
-                    </div>
-                </div>
+        <div class="collaborations">
+            <h2>Research Collaborations</h2>
+            <div class="collaboration-item">
+                <p>Wang, J., Gan, X., Han, M., et al. (2025). Effects of exogenous oxytocin on human brain function are regulated by oxytocin gene expression: A meta-analysis of 20 years of oxytocin neuroimaging and transcriptomic analyses.</p>
+                <a href="https://www.medrxiv.org/content/10.1101/2025.08.24.25334303v1" class="collaboration-link">View Preprint →</a>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 Fran's Research Portfolio</p>
+            <div class="collaboration-item">
+                <p>Cheng, C., Tsang, M., Han, M., et al. (2025). Neural systems underlying autobiographical memory dysregulations in depressive and at-risk individuals: A neuroimaging meta-analysis.</p>
+                <a href="https://www.medrxiv.org/content/10.1101/2025.04.06.25325353v1" class="collaboration-link">View Preprint →</a>
+            </div>
         </div>
-    </footer>
+    </div>
+
+    <script>
+        const modal = document.getElementById('imageModal');
+        const modalContent = document.getElementById('modalContent');
+        const closeBtn = document.getElementsByClassName('close')[0];
+        const projectContainers = document.querySelectorAll('.project-img-container');
+
+        const projectImages = {
+            '1': [
+                {
+                    src: 'https://bululu1025.github.io/image_fran/Project1.png',
+                    caption: 'Project Overview'
+                },
+                {
+                    src: 'https://bululu1025.github.io/image_fran/pupil.png',
+                    caption: '瞳孔响应结果'
+                },
+                {
+                    src: 'https://bululu1025.github.io/image_fran/HMM.png',
+                    caption: '马尔科夫链结果'
+                }
+            ],
+            '2': [
+                {
+                    src: 'https://bululu1025.github.io/image_fran/Project2.png',
+                    caption: 'AVP的特异性调节作用'
+                }
+            ],
+            '3': [
+                {
+                    src: 'https://bululu1025.github.io/image_fran/Project3.png',
+                    caption: 'Losartan的特异性调节作用'
+                }
+            ]
+        };
+
+        projectContainers.forEach(container => {
+            container.addEventListener('click', function() {
+                const projectId = this.getAttribute('data-project');
+                showModal(projectId);
+            });
+        });
+
+        function showModal(projectId) {
+            modal.style.display = 'block';
+            modalContent.innerHTML = '';
+            
+            projectImages[projectId].forEach(img => {
+                const imgElement = document.createElement('img');
+                imgElement.src = img.src;
+                imgElement.className = 'modal-image';
+                
+                const caption = document.createElement('div');
+                caption.className = 'image-caption';
+                caption.textContent = img.caption;
+                
+                modalContent.appendChild(imgElement);
+                modalContent.appendChild(caption);
+            });
+        }
+
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
