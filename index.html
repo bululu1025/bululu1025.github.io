@@ -3,579 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Han Mengfan - Cognitive Neuroscience Researcher</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Fran's Research Portfolio</title>
     <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --text: #333;
-            --background: #fff;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
-            background-color: var(--background);
-            color: var(--text);
+            background-color: #f5f5f5;
+            color: #333;
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 2rem;
         }
-        
-        /* Header & Navigation */
-        header {
-            background: var(--primary);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        nav {
+
+        /* Header Section */
+        .header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 2rem;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--secondary);
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            text-align: center;
-        }
-        
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-        }
-        
+
         .profile-img {
             width: 200px;
             height: 200px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
-        
-        .hero h1 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
+
+        .profile-img:hover {
+            transform: scale(1.05);
         }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
+
+        .intro {
+            flex: 1;
         }
-        
+
+        .intro h1 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .action-buttons {
+            margin-top: 1.5rem;
+        }
+
         .btn {
             display: inline-block;
             padding: 0.8rem 1.5rem;
-            background: var(--secondary);
-            color: white;
-            text-decoration: none;
+            margin-right: 1rem;
             border-radius: 5px;
-            font-weight: 500;
-            transition: all 0.3s;
-            margin: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
-        
-        .btn:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-        }
-        
-        .btn-outline:hover {
-            background: var(--secondary);
+
+        .btn-primary {
+            background-color: #3498db;
             color: white;
         }
-        
-        /* Sections */
-        section {
-            padding: 4rem 0;
+
+        .btn-secondary {
+            background-color: #2ecc71;
+            color: white;
         }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            color: var(--primary);
-            position: relative;
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: var(--secondary);
-            margin: 0.5rem auto;
-        }
-        
+
         /* Projects Section */
-        .projects-grid {
+        .projects {
+            margin-bottom: 4rem;
+        }
+
+        .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
-        
+
         .project-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
-        
+
         .project-card:hover {
             transform: translateY(-5px);
         }
-        
+
+        .project-img-container {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+
         .project-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .project-content {
-            padding: 1.5rem;
-        }
-        
-        .project-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-        
-        .project-desc {
-            margin-bottom: 1rem;
-            color: #666;
-        }
-        
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .tag {
-            background: var(--light);
-            color: var(--dark);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-        
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .project-link {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-        
-        .project-link:hover {
-            text-decoration: underline;
-        }
-        
-        /* Collaborations Section */
-        .collaborations {
-            background: var(--light);
-        }
-        
-        .pub-list {
-            list-style: none;
-        }
-        
-        .pub-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-        
-        .pub-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .pub-authors {
-            color: #666;
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
-        
-        .pub-venue {
-            color: var(--secondary);
-            font-size: 0.9rem;
-        }
-        
-        .pub-link {
-            display: inline-block;
-            margin-top: 0.5rem;
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 1rem 0;
-        }
-        
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: var(--secondary);
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Modal for project details */
-        .modal {
-            display: none;
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            overflow: auto;
+            object-fit: cover;
         }
-        
-        .modal-content {
-            background: white;
-            margin: 5% auto;
-            padding: 2rem;
-            width: 90%;
-            max-width: 800px;
-            border-radius: 10px;
-            position: relative;
+
+        .project-details {
+            padding: 1.5rem;
         }
-        
-        .close-modal {
+
+        .project-title {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-overlay {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #999;
-        }
-        
-        .close-modal:hover {
-            color: var(--accent);
-        }
-        
-        .modal-images {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-        
-        .modal-img {
+            top: 0;
+            left: 0;
             width: 100%;
-            border-radius: 5px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            background: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .project-img-container:hover .stats-overlay {
+            opacity: 1;
+        }
+
+        .stats-img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        /* Collaborations Section */
+        .collaborations {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .collaboration-link {
+            display: block;
+            color: #3498db;
+            text-decoration: none;
+            margin: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .collaboration-link:hover {
+            color: #2980b9;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .action-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                margin-right: 0;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">Han Mengfan</div>
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Research</a></li>
-                    <li><a href="#collaborations">Collaborations</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="about">
-        <div class="container">
-            <div class="hero-content">
-                <img src="https://placehold.co/200x200/3498db/white?text=HM" alt="Han Mengfan" class="profile-img">
-                <h1>Han Mengfan</h1>
-                <p>Master Student @ UESTC | Cognitive Neuroscience Researcher</p>
-                <p>
-                    Hi! I am a master student at <a href="https://en.uestc.edu.cn/">UESTC</a>, 
-                    advised by <a href="#">Prof. Benjamin Becker</a>. My research focuses on pharmacological modulation of human fear and attention using eye-tracking and fMRI methods.
-                </p>
-                <p>
-                    I am passionate about investigating neural and cognitive mechanisms underlying human behavior and mental processes.
-                </p>
-                <div>
-                    <a href="mailto:waichiputao@163.com" class="btn">Email Me</a>
-                    <a href="#" class="btn btn-outline">View My CV</a>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <img src="https://bululu1025.github.io/image_fran/pic_fran.jpg" alt="Profile Picture" class="profile-img">
+            <div class="intro">
+                <h1>Hi! I'm Fran</h1>
+                <p>I am a master student at UESTC, advised by Prof. Benjamin Becker. My research focuses on pharmacological modulation of human fear and attention using eye-tracking and fMRI methods.</p>
+                <p>I am passionate about investigating neural and cognitive mechanisms underlying human behavior and mental processes.</p>
+                <div class="action-buttons">
+                    <a href="mailto:your.email@example.com" class="btn btn-primary">Email Me</a>
+                    <a href="path-to-your-cv.pdf" class="btn btn-secondary">View My CV</a>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Research</h2>
-            <div class="projects-grid">
+        <!-- Projects Section -->
+        <div class="projects">
+            <div class="project-grid">
                 <!-- Project 1 -->
                 <div class="project-card">
-                    <img src="https://placehold.co/600x400/3498db/white?text=Project+1" alt="Project 1" class="project-img">
-                    <div class="project-content">
-                        <h3 class="project-title">Pharmacological Modulation of Fear & Attention</h3>
-                        <p class="project-desc">Investigating how Losartan and Vasopressin modulate human fear response and attention through eye-tracking.</p>
-                        <div class="project-tags">
-                            <span class="tag">Eye-Tracking</span>
-                            <span class="tag">Pharmacology</span>
-                            <span class="tag">GLMM</span>
+                    <div class="project-img-container">
+                        <img src="https://bululu1025.github.io/image_fran/Project1.png" alt="Project 1" class="project-img">
+                        <div class="stats-overlay">
+                            <img src="https://bululu1025.github.io/image_fran/pupil.png" alt="Statistics" class="stats-img">
+                            <img src="https://bululu1025.github.io/image_fran/HMM.png" alt="HMM Analysis" class="stats-img">
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" onclick="openModal('modal1')">View Details</a>
-                            <a href="https://www.medrxiv.org/content/10.1101/2025.05.18.25327885v1" class="project-link">Preprint</a>
-                        </div>
+                    </div>
+                    <div class="project-details">
+                        <h3 class="project-title">Fear Learning Project</h3>
+                        <p>Innovative approach combining pupillometry and Hidden Markov Models to investigate fear learning mechanisms.</p>
+                        <a href="https://www.medrxiv.org/content/10.1101/2025.05.18.25327885v1" class="collaboration-link">View Preprint →</a>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
                 <div class="project-card">
-                    <img src="https://placehold.co/600x400/e74c3c/white?text=Project+2" alt="Project 2" class="project-img">
-                    <div class="project-content">
-                        <h3 class="project-title">Neural Mechanisms of Looming Threat</h3>
-                        <p class="project-desc">fMRI study investigating sex-specific neural dynamics of threat processing in females.</p>
-                        <div class="project-tags">
-                            <span class="tag">fMRI</span>
-                            <span class="tag">Threat Processing</span>
-                            <span class="tag">Gender Differences</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" onclick="openModal('modal2')">View Details</a>
-                            <a href="#" class="project-link">In Progress</a>
-                        </div>
+                    <div class="project-img-container">
+                        <img src="https://bululu1025.github.io/image_fran/Project2.png" alt="Project 2" class="project-img">
+                    </div>
+                    <div class="project-details">
+                        <h3 class="project-title">Attention Modulation Study</h3>
+                        <p>Currently under revision: Novel methodology for investigating attention mechanisms using advanced eye-tracking techniques.</p>
                     </div>
                 </div>
 
                 <!-- Project 3 -->
                 <div class="project-card">
-                    <img src="https://placehold.co/600x400/2ecc71/white?text=Project+3" alt="Project 3" class="project-img">
-                    <div class="project-content">
-                        <h3 class="project-title">Computational Modeling of Threat Response</h3>
-                        <p class="project-desc">Developing novel computational models to identify threat-response phenotypes and differentiate drug effects.</p>
-                        <div class="project-tags">
-                            <span class="tag">Computational Modeling</span>
-                            <span class="tag">HMM</span>
-                            <span class="tag">FPCA</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" onclick="openModal('modal3')">View Details</a>
-                            <a href="#" class="project-link">In Progress</a>
-                        </div>
+                    <div class="project-img-container">
+                        <img src="https://bululu1025.github.io/image_fran/Project3.png" alt="Project 3" class="project-img">
+                    </div>
+                    <div class="project-details">
+                        <h3 class="project-title">fMRI Analysis Project</h3>
+                        <p>Ongoing research: Innovative approaches to analyzing neural responses during emotional processing.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Collaborations Section -->
-    <section id="collaborations" class="collaborations">
-        <div class="container">
-            <h2 class="section-title">Collaborative Research</h2>
-            <ul class="pub-list">
-                <li class="pub-item">
-                    <h3 class="pub-title">Effects of exogenous oxytocin on human brain function are regulated by oxytocin gene expression</h3>
-                    <p class="pub-authors">Wang, J., Gan, X., Han, M., Dong, W., He, J., Fu, K., ... & Becker, B.</p>
-                    <p class="pub-venue">medRxiv, 2025-08</p>
-                    <a href="https://www.medrxiv.org/content/10.1101/2025.08.24.25334303v1" class="pub-link">View Preprint</a>
-                </li>
-                <li class="pub-item">
-                    <h3 class="pub-title">Neural systems underlying autobiographical memory dysregulations in depressive and at-risk individuals</h3>
-                    <p class="pub-authors">Cheng, C., Tsang, M., Han, M., Zhang, J., Maes, M., Klugah-Brown, B., ... & Becker, B.</p>
-                    <p class="pub-venue">medRxiv, 2025-04</p>
-                    <a href="https://www.medrxiv.org/content/10.1101/2025.04.06.25325353v1" class="pub-link">View Preprint</a>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <h3>Han Mengfan</h3>
-            <p>Master Student in Applied Psychology</p>
-            <div class="social-links">
-                <a href="mailto:waichiputao@163.com"><i class="fas fa-envelope"></i></a>
-                <a href="#"><i class="ai ai-google-scholar"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-            </div>
-            <p>© 2023 Han Mengfan. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Project Modals -->
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('modal1')">&times;</span>
-            <h2>Pharmacological Modulation of Fear & Attention</h2>
-            <p>This project investigated how Losartan and Vasopressin modulate human fear response and attention through eye-tracking. We collected multimodal data from 117 participants under pharmacological intervention.</p>
-            
-            <div class="modal-images">
-                <img src="https://placehold.co/400x300/3498db/white?text=Pupil+Analysis" alt="Pupil Analysis" class="modal-img">
-                <img src="https://placehold.co/400x300/3498db/white?text=HMM+Model" alt="HMM Model" class="modal-img">
-            </div>
-            
-            <h3>Key Findings:</h3>
-            <ul>
-                <li>Losartan enhances post-error adaptive control through trial-based learning</li>
-                <li>AVP phase-specifically modulates pupillary-saccade coordination during threat processing</li>
-                <li>Novel computational models successfully differentiated drug effects on threat-response phenotypes</li>
-            </ul>
-            
-            <a href="https://www.medrxiv.org/content/10.1101/2025.05.18.25327885v1" class="btn">View Preprint</a>
+        <!-- Collaborations Section -->
+        <div class="collaborations">
+            <h2>Research Collaborations</h2>
+            <a href="https://www.medrxiv.org/content/10.1101/2025.08.24.25334303v1" class="collaboration-link">
+                Collaborative Study on Neural Mechanisms (2025)
+            </a>
+            <a href="https://www.medrxiv.org/content/10.1101/2025.04.06.25325353v1" class="collaboration-link">
+                Joint Research on Cognitive Processing (2025)
+            </a>
         </div>
     </div>
-
-    <div id="modal2" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('modal2')">&times;</span>
-            <h2>Neural Mechanisms of Looming Threat</h2>
-            <p>fMRI study investigating sex-specific neural dynamics of threat processing in females. Current progress: 14/40 participants acquired.</p>
-            
-            <img src="https://placehold.co/800x400/e74c3c/white?text=fMRI+Analysis" alt="fMRI Analysis" class="modal-img" style="width: 100%;">
-            
-            <h3>Methodology:</h3>
-            <p>Using fMRI to study gender-specific threat processing neural dynamics. The study focuses on how males and females differentially process looming threats at the neural level.</p>
-            
-            <a href="#" class="btn">Manuscript in Preparation</a>
-        </div>
-    </div>
-
-    <div id="modal3" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('modal3')">&times;</span>
-            <h2>Computational Modeling of Threat Response</h2>
-            <p>Developing novel computational models to identify threat-response phenotypes and differentiate drug effects.</p>
-            
-            <img src="https://placehold.co/800x400/2ecc71/white?text=Computational+Model" alt="Computational Model" class="modal-img" style="width: 100%;">
-            
-            <h3>Approach:</h3>
-            <p>We developed an FPCA-Cluster-HMM model to identify threat-response phenotypes and differentiate drug effects. This approach allows us to capture the dynamic nature of threat processing and how it's modulated by pharmacological interventions.</p>
-            
-            <a href="#" class="btn">Manuscript in Preparation</a>
-        </div>
-    </div>
-
-    <script>
-        // Modal functionality
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-        
-        // Close modal when clicking outside content
-        window.onclick = function(event) {
-            const modals = document.getElementsByClassName('modal');
-            for (let i = 0; i < modals.length; i++) {
-                if (event.target == modals[i]) {
-                    modals[i].style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            }
-        }
-    </script>
 </body>
 </html>
