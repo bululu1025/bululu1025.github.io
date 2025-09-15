@@ -1,607 +1,581 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>ZHANG Yuechen</title>
-  <meta name="author" content="ZHANG Yuechen">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="stylesheet_new.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥥</text></svg>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Han Mengfan - Cognitive Neuroscience Researcher</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --background: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            text-align: center;
+        }
+        
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s;
+            margin: 0.5rem;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+            margin: 0.5rem auto;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .project-desc {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tag {
+            background: var(--light);
+            color: var(--dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .project-link {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .project-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Collaborations Section */
+        .collaborations {
+            background: var(--light);
+        }
+        
+        .pub-list {
+            list-style: none;
+        }
+        
+        .pub-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .pub-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pub-authors {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pub-venue {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+        
+        .pub-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Modal for project details */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 2rem;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .close-modal:hover {
+            color: var(--accent);
+        }
+        
+        .modal-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .modal-img {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
-
 <body>
-  <!-- 快速导航栏 -->
-  <nav class="fast-nav">
-    <div class="nav-container">
-      <div class="nav-title">YUECHEN ZHANG's WEBPAGE</div>
-      <div class="nav-links">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#representative" class="nav-link">Highlights</a>
-        <a href="#publications" class="nav-link">Publications</a>
-        <a href="#education" class="nav-link">Experience</a>
-        <a href="#awards" class="nav-link">Awards</a>
-      </div>
-    </div>
-  </nav>
-
-
-  <!-- 头部区域 -->
-  <div id="about" class="header-container">
-    <div class="header-background"></div>
-    <div class="header-content">
-      <div class="header-text">
-        <h1 class="header-title">ZHANG Yuechen, Julian</h1>
-        <p class="header-subtitle">Ph.D. Student @ CUHK</p>
-        <p class="header-description">
-          Hi! I am a fourth-year Ph.D. student at <a href="https://www.cuhk.edu.hk/english/index.html">CUHK</a>, 
-          advised by <a href="https://jiaya.me">Prof. Jiaya Jia</a>. I finished my bachelor's degree at <a href="https://www.cuhk.edu.hk/english/index.html">CUHK</a> in 2021.
-          <br><br>
-          I will graduate in Dec 2025 and is open for job opportunities (给孩子一个好工作吧). Drop me an Email if you are recruiting!
-        </p>
-        <div class="header-links">
-          <a href="mailto:zhangyc@link.cuhk.edu.hk" class="header-link">Email</a>
-          <a href="https://scholar.google.com/citations?user=8OijNgkAAAAJ&hl" class="header-link">Google Scholar</a>
-          <a href="https://github.com/JulianJuaner" class="header-link">Github</a>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Han Mengfan</div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Research</a></li>
+                    <li><a href="#collaborations">Collaborations</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-      </div>
-      <div class="header-image">
-        <img src="images/IMG_2755.jpg" alt="ZHANG Yuechen">
-        <br><br>
-        <img src="images/interests.png" alt="research interests">
-      </div>
-    </div>
-  </div>
+    </header>
 
-  <!-- Representative Works 部分 -->
-  <section id="representative" class="works-section">
-    <h2 class="section-title">Representative Research Works</h2>
-    <div class="works-list">
-      <!-- Jenga -->
-      <div class="bigcard">
-        <div class="bigcard-img-wrap hover-img-box">
-          <img src="images/jenga_default.gif" alt="Jenga" class="bigcard-img img-default" />
-          <img src="images/jenga.png" alt="Jenga" class="bigcard-img img-hover" />
-        </div>
-        <div class="bigcard-content">
-          <div>
-            <div class="bigcard-title">Training-Free Efficient Video Generation via Dynamic Token Carving</div>
-            <div class="bigcard-authors"><span class="author-name">Yuechen Zhang</span>, Jinbo Xing, Bin Xia, Shaoteng Liu, Bohao Peng, Xin Tao, Pengfei Wan, Eric Lo, Jiaya Jia</div>
-            <div class="bigcard-venue">Preprint, 2025</div>
-            <div class="bigcard-desc">Jenga accelerates HunyuanVideo by 4.68-10.35× through dynamic attention carving and progressive resolution generation.</div>
-          </div>
-          <div class="bigcard-links">
-              <a href="https://arxiv.org/abs/2505.16864" class="bigcard-link">arXiv</a>
-              <a href="projects/jenga/index.html" class="bigcard-link">Project</a>
-              <a href="https://github.com/dvlab-research/Jenga" class="bigcard-link">Code </a> 
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="container">
+            <div class="hero-content">
+                <img src="https://placehold.co/200x200/3498db/white?text=HM" alt="Han Mengfan" class="profile-img">
+                <h1>Han Mengfan</h1>
+                <p>Master Student @ UESTC | Cognitive Neuroscience Researcher</p>
+                <p>
+                    Hi! I am a master student at <a href="https://en.uestc.edu.cn/">UESTC</a>, 
+                    advised by <a href="#">Prof. Benjamin Becker</a>. My research focuses on pharmacological modulation of human fear and attention using eye-tracking and fMRI methods.
+                </p>
+                <p>
+                    I am passionate about investigating neural and cognitive mechanisms underlying human behavior and mental processes.
+                </p>
+                <div>
+                    <a href="mailto:waichiputao@163.com" class="btn">Email Me</a>
+                    <a href="#" class="btn btn-outline">View My CV</a>
+                </div>
             </div>
         </div>
-      </div>
-
-      <!-- MagicMirror -->
-      <div class="bigcard">
-        <div class="bigcard-img-wrap hover-img-box">
-          <img src="images/magicmirror-default.gif" alt="MagicMirror" class="bigcard-img img-default" />
-          <img src="images/magicmirror.png" alt="MagicMirror" class="bigcard-img img-hover" />
-        </div>
-        <div class="bigcard-content">
-          <div>
-            <div class="bigcard-title">MagicMirror: ID-Preserved Video Generation in Video Diffusion Transformers</div>
-            <div class="bigcard-authors"><span class="author-name">Yuechen Zhang*</span>, Yaoyang Liu*, Bin Xia, Bohao Peng, Zexin Yan, Eric Lo, Jiaya Jia</div>
-            <div class="bigcard-venue">ICCV, 2025</div>
-            <div class="bigcard-desc">MagicMirror generates identity-preserved videos from reference images using a conditional adaptive normalization module.</div>
-          </div>
-          <div class="bigcard-links">
-            <a href="https://arxiv.org/abs/2501.03931" class="bigcard-link">arXiv</a>
-            <a href="projects/MagicMirror/index.html" class="bigcard-link">Project</a>
-            <a href="https://github.com/dvlab-research/MagicMirror" class="bigcard-link">Code</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Mini-Gemini -->
-      <div class="bigcard">
-        <div class="bigcard-img-wrap hover-img-box">
-          <img src="images/minigemini-default.png" alt="Mini-Gemini" class="bigcard-img img-default" />
-          <img src="images/minigemini.png" alt="Mini-Gemini" class="bigcard-img img-hover" />
-        </div>
-        <div class="bigcard-content">
-          <div>
-            <div class="bigcard-title">Mini-Gemini: Mining the Potential of Multi-modality Vision Language Models</div>
-            <div class="bigcard-authors">Yanwei Li*, <span class="author-name">Yuechen Zhang*</span>, Chengyao Wang*, Zhisheng Zhong, Yixin Chen, Ruihang Chu, Shaoteng Liu, Jiaya Jia</div>
-            <div class="bigcard-venue">Preprint, 2024</div>
-            <div class="bigcard-desc">Mini-Gemini is a novel framework ranges from 2B to 34B VLMs for hi-resolution image understanding.</div>
-          </div>
-          <div class="bigcard-links">
-            <a href="https://arxiv.org/abs/2403.18814" class="bigcard-link">arXiv</a>
-            <a href="https://mini-gemini.github.io/" class="bigcard-link">Project</a>
-            <a href="https://github.com/dvlab-research/MiniGemini" class="bigcard-link">Code</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Prompt Highlighter -->
-      <div class="bigcard">
-        <div class="bigcard-img-wrap hover-img-box">
-          <img src="images/ph-default.png" alt="Prompt Highlighter" class="bigcard-img img-default" />
-          <img src="images/ph.png" alt="Prompt Highlighter" class="bigcard-img img-hover" />
-        </div>
-        <div class="bigcard-content">
-          <div>
-            <div class="bigcard-title">Prompt Highlighter: Interactive Control for Multi-Modal LLMs</div>
-            <div class="bigcard-authors"><span class="author-name">Yuechen Zhang</span>, Shengju Qian, Bohao Peng, Shu Liu, Jiaya Jia</div>
-            <div class="bigcard-venue">CVPR, 2024</div>
-            <div class="bigcard-desc">Prompt Highlighter is a training-free inference pipeline, which facilitates token-level user interactions for customized generation.</div>
-          </div>
-          <div class="bigcard-links">
-            <a href="https://arxiv.org/abs/2312.04302" class="bigcard-link">arXiv</a>
-            <a href="projects/PromptHighlighter/" class="bigcard-link">Project</a>
-            <a href="https://github.com/dvlab-research/Prompt-Highlighter/" class="bigcard-link">Code</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- RIVAL -->
-      <div class="bigcard">
-        <div class="bigcard-img-wrap hover-img-box">
-          <img src="images/rival-default.png" alt="RIVAL" class="bigcard-img img-default" />
-          <img src="images/rival.png" alt="RIVAL" class="bigcard-img img-hover" />
-        </div>
-        <div class="bigcard-content">
-          <div>
-            <div class="bigcard-title">Real-World Image Variation by Aligning Diffusion Inversion Chain</div>
-            <div class="bigcard-authors"><span class="author-name">Yuechen Zhang</span>, Jinbo Xing, Eric Lo, Jiaya Jia <br/> <br/></div>
-            <div class="bigcard-venue">NeurIPS (Spotlight), 2023</div>
-            <div class="bigcard-desc">Given an image as the prompt, we can generate its variations by aligning the diffusion inversion chain. The variations are diverse and controllable.</div>
-          </div>
-          <div class="bigcard-links">
-            <a href="https://arxiv.org/abs/2305.18729" class="bigcard-link">arXiv</a>
-            <a href="https://rival-diff.github.io/" class="bigcard-link">Project</a>
-            <a href="https://github.com/julianjuaner/RIVAL/" class="bigcard-link">Code</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Ref-NPR -->
-      <div class="bigcard">
-        <div class="bigcard-img-wrap hover-img-box">
-          <img src="images/ref-npr-default.gif" alt="Ref-NPR" class="bigcard-img img-default" />
-          <img src="images/ref-npr.png" alt="Ref-NPR" class="bigcard-img img-hover" />
-        </div>
-        <div class="bigcard-content">
-          <div>
-            <div class="bigcard-title">Ref-NPR: Reference-Based Non-Photorealistic Radiance Fields</div>
-            <div class="bigcard-authors"><span class="author-name">Yuechen Zhang</span>, Zexin He, Jinbo Xing, Xufeng Yao, Jiaya Jia</div>
-            <div class="bigcard-venue">CVPR, 2023</div>
-            <div class="bigcard-desc">We present a controllable scene stylization method utilizing radiance fields to stylize a 3D scene, with a single stylized 2D view taken as reference.</div>
-          </div>
-          <div class="bigcard-links">
-            <a href="https://arxiv.org/abs/2212.02766" class="bigcard-link">arXiv</a>
-            <a href="https://ref-npr.github.io" class="bigcard-link">Project</a>
-            <a href="https://github.com/dvlab-research/Ref-NPR" class="bigcard-link">Code</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Full Publications 部分 -->
-  <section id="publications" class="publications-section">
-    <h2 class="section-title">Full Publications</h2>
-    <div class="publications-list">
-      <!-- Jenga -->
-      <div class="publication-item">
-        <div class="publication-image">
-          <img src="images/jenga_default.gif" alt="Jenga" class="pub-img-default" />
-          <img src="images/jenga.png" alt="Jenga" class="pub-img-hover" />
-        </div>
-        <div class="publication-content">
-          <div class="publication-title">Training-Free Efficient Video Generation via Dynamic Token Carving</div>
-          <div class="publication-authors"><span class="author-name">Yuechen Zhang</span>, Jinbo Xing, Bin Xia, Shaoteng Liu, Bohao Peng, Xin Tao, Pengfei Wan, Eric Lo, Jiaya Jia</div>
-          <div class="publication-venue">Preprint, 2024</div>
-          <div class="publication-links">
-            <a href="https://arxiv.org/abs/2505.16864">arXiv</a> /
-            <a href="projects/jenga/index.html">Project</a> /
-            <a href="https://github.com/dvlab-research/Jenga">Code</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- MagicMirror -->
-      <div class="publication-item">
-        <div class="publication-image">
-          <img src="images/magicmirror-default.gif" alt="MagicMirror" class="pub-img-default" />
-          <img src="images/magicmirror.png" alt="MagicMirror" class="pub-img-hover" />
-        </div>
-        <div class="publication-content">
-          <div class="publication-title">MagicMirror: ID-Preserved Video Generation in Video Diffusion Transformers</div>
-          <div class="publication-authors"><span class="author-name">Yuechen Zhang*</span>, Yaoyang Liu*, Bin Xia, Bohao Peng, Zexin Yan, Eric Lo, Jiaya Jia</div>
-          <div class="publication-venue">ICCV, 2025</div>
-          <div class="publication-links">
-            <a href="https://arxiv.org/abs/2501.03931">arXiv</a> /
-            <a href="projects/MagicMirror/index.html">Project</a> /
-            <a href="https://github.com/dvlab-research/MagicMirror">Code</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Lyra -->
-      <div class="publication-item">
-        <div class="publication-image">
-          <img src="images/lyra-default.png" alt="Lyra" class="pub-img-default" />
-          <img src="images/lyra.png" alt="Lyra" class="pub-img-hover" />
-        </div>
-        <div class="publication-content">
-          <div class="publication-title">Lyra: An Efficient and Speech-Centric Framework for Omni-Cognition</div>
-          <div class="publication-authors">Zhisheng Zhong*, Chengyao Wang*, Yuqi Liu*, Senqiao Yang, Longxiang Tang, <span class="author-name">Yuechen Zhang</span>, Jingyao Li, Tianyuan Qu, Yanwei Li, Yukang Chen, Shaozuo Yu, Sitong Wu, Eric Lo, Shu Liu, Jiaya Jia</div>
-          <div class="publication-venue">ICCV, 2025</div>
-          <div class="publication-links">
-            <a href="https://arxiv.org/abs/2412.09501">arXiv</a> /
-            <a href="https://www.youtube.com/watch?v=7kh-M0jmmtI">Video</a> /
-            <a href="https://github.com/dvlab-research/Lyra">Code</a> /
-            <a href="https://lyra-omni.github.io/">Project</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Mini-Gemini -->
-      <div class="publication-item">
-        <div class="publication-image">
-          <img src="images/minigemini-default.png" alt="Mini-Gemini" class="pub-img-default" />
-          <img src="images/minigemini.png" alt="Mini-Gemini" class="pub-img-hover" />
-        </div>
-        <div class="publication-content">
-          <div class="publication-title">Mini-Gemini: Mining the Potential of Multi-modality Vision Language Models</div>
-          <div class="publication-authors">Yanwei Li*, <span class="author-name">Yuechen Zhang*</span>, Chengyao Wang*, Zhisheng Zhong, Yixin Chen, Ruihang Chu, Shaoteng Liu, Jiaya Jia</div>
-          <div class="publication-venue">Preprint, 2024</div>
-          <div class="publication-links">
-            <a href="https://arxiv.org/abs/2403.18814">arXiv</a> /
-            <a href="https://mini-gemini.github.io/">Project</a> /
-            <a href="https://github.com/dvlab-research/MiniGemini">Code</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Prompt Highlighter -->
-      <div class="publication-item">
-        <div class="publication-image">
-          <img src="images/ph-default.png" alt="Prompt Highlighter" class="pub-img-default" />
-          <img src="images/ph.png" alt="Prompt Highlighter" class="pub-img-hover" />
-        </div>
-        <div class="publication-content">
-          <div class="publication-title">Prompt Highlighter: Interactive Control for Multi-Modal LLMs</div>
-          <div class="publication-authors"><span class="author-name">Yuechen Zhang</span>, Shengju Qian, Bohao Peng, Shu Liu, Jiaya Jia</div>
-          <div class="publication-venue">CVPR, 2024</div>
-          <div class="publication-links">
-            <a href="https://arxiv.org/abs/2312.04302">arXiv</a> /
-            <a href="projects/PromptHighlighter/">Project</a> /
-            <a href="https://github.com/dvlab-research/Prompt-Highlighter/">Code</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- RIVAL -->
-      <div class="publication-item">
-        <div class="publication-image">
-          <img src="images/rival-default.png" alt="RIVAL" class="pub-img-default" />
-          <img src="images/rival.png" alt="RIVAL" class="pub-img-hover" />
-        </div>
-        <div class="publication-content">
-          <div class="publication-title">Real-World Image Variation by Aligning Diffusion Inversion Chain</div>
-          <div class="publication-authors"><span class="author-name">Yuechen Zhang</span>, Jinbo Xing, Eric Lo, Jiaya Jia</div>
-          <div class="publication-venue">NeurIPS (Spotlight), 2023</div>
-          <div class="publication-links">
-            <a href="https://arxiv.org/abs/2305.18729">arXiv</a> /
-            <a href="https://rival-diff.github.io/">Project</a> /
-            <a href="https://github.com/julianjuaner/RIVAL/">Code</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Ref-NPR -->
-      <div class="publication-item">
-        <div class="publication-image">
-          <img src="images/ref-npr-default.gif" alt="Ref-NPR" class="pub-img-default" />
-          <img src="images/ref-npr.png" alt="Ref-NPR" class="pub-img-hover" />
-        </div>
-        <div class="publication-content">
-          <div class="publication-title">Ref-NPR: Reference-Based Non-Photorealistic Radiance Fields</div>
-          <div class="publication-authors"><span class="author-name">Yuechen Zhang</span>, Zexin He, Jinbo Xing, Xufeng Yao, Jiaya Jia</div>
-          <div class="publication-venue">CVPR, 2023</div>
-          <div class="publication-links">
-            <a href="https://arxiv.org/abs/2212.02766">arXiv</a> /
-            <a href="https://ref-npr.github.io">Project</a> /
-            <a href="https://github.com/dvlab-research/Ref-NPR">Code</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Video-P2P -->
-      <div class="publication-item">
-        <div class="publication-image">
-          <img src="images/videop2p.gif" alt="Video-P2P" class="pub-img-default" />
-          <img src="images/videop2p.png" alt="Video-P2P" class="pub-img-hover" />
-        </div>
-        <div class="publication-content">
-          <div class="publication-title">Video-P2P: Video Editing with Cross-attention Control</div>
-          <div class="publication-authors">Shaoteng Liu, <span class="author-name">Yuechen Zhang</span>, Wenbo Li, Zhe Lin, Jiaya Jia</div>
-          <div class="publication-venue">CVPR, 2024</div>
-          <div class="publication-links">
-            <a href="https://arxiv.org/abs/2303.04761">arXiv</a> /
-            <a href="https://video-p2p.github.io/">Project</a> /
-            <a href="https://github.com/ShaoTengLiu/Video-P2P">Code</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- DreamOmni -->
-      <div class="publication-item">
-        <div class="publication-image">
-          <img src="images/dreamomni-default.png" alt="DreamOmni" class="pub-img-default" />
-          <img src="images/dreamomni.png" alt="DreamOmni" class="pub-img-hover" />
-        </div>
-        <div class="publication-content">
-          <div class="publication-title">DreamOmni: Unified Image Generation and Editing</div>
-          <div class="publication-authors">Bin Xia, <span class="author-name">Yuechen Zhang</span>, Jingyao Li, Chengyao Wang, Yitong Wang, Xinglong Wu, Bei Yu, Jiaya Jia</div>
-          <div class="publication-venue">CVPR, 2025</div>
-          <div class="publication-links">
-            <a href="https://arxiv.org/abs/2406.02816">arXiv</a> /
-            <a href="https://zj-binxia.github.io/DreamOmni-ProjectPage/">Project</a> /
-            <a href="https://github.com/zj-binxia/DreamOmni">Code</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ControlNeXt -->
-      <div class="publication-item">
-        <div class="publication-image">
-          <img src="images/controlnext-default.gif" alt="ControlNeXt" class="pub-img-default" />
-          <img src="images/controlnext.png" alt="ControlNeXt" class="pub-img-hover" />
-        </div>
-        <div class="publication-content">
-          <div class="publication-title">ControlNeXt: Powerful and Efficient Control for Image and Video Generation</div>
-          <div class="publication-authors">Bohao Peng, Jian Wang, <span class="author-name">Yuechen Zhang</span>, Wenbo Li, Ming-Chang Yang, Jiaya Jia</div>
-          <div class="publication-venue">Preprint, 2024</div>
-          <div class="publication-links">
-            <a href="https://arxiv.org/abs/2408.06070">arXiv</a> /
-            <a href="https://pbihao.github.io/projects/controlnext/index.html">Project</a> /
-            <a href="https://huggingface.co/spaces/Eugeoter/ControlNeXt">Demo</a> /
-            <a href="https://github.com/dvlab-research/ControlNeXt">Code</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- R^2 -->
-      <div class="publication-item">
-        <div class="publication-image">
-          <img src="images/r2-default.png" alt="R^2" class="pub-img-default" />
-          <img src="images/r2.png" alt="R^2" class="pub-img-hover" />
-        </div>
-        <div class="publication-content">
-          <div class="publication-title">R<sup>2</sup>Former: Probing Region Relationship in Semantic Segmentation Transformers</div>
-          <div class="publication-authors"><span class="author-name">Yuechen Zhang</span>, Tiancheng Shen*, Huaijia Lin, Lu Qi, Eric Lo, Jiaya Jia</div>
-          <div class="publication-venue">Preprint, 2022</div>
-        </div>
-      </div>
-
-      <!-- CRM -->
-      <div class="publication-item">
-        <div class="publication-image">
-          <img src="images/crm-default.png" alt="CRM" class="pub-img-default" />
-          <img src="images/crm.png" alt="CRM" class="pub-img-hover" />
-        </div>
-        <div class="publication-content">
-          <div class="publication-title">High Quality Segmentation for Ultra High-resolution Images</div>
-          <div class="publication-authors">Tiancheng Shen, <span class="author-name">Yuechen Zhang</span>, Lu Qi, Jason Kuen, Xingyu Xie, Jianlong Wu, Zhe Lin, Jiaya Jia</div>
-          <div class="publication-venue">CVPR, 2022</div>
-          <div class="publication-links">
-            <a href="https://openaccess.thecvf.com/content/CVPR2022/papers/Shen_High_Quality_Segmentation_for_Ultra_High-Resolution_Images_CVPR_2022_paper.pdf">Paper</a> /
-            <a href="https://github.com/dvlab-research/Entity/tree/main/High-Quality-Segmention">Code</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ResMaster -->
-      <div class="publication-item">
-        <div class="publication-image">
-          <img src="images/resmaster.png" alt="ResMaster" class="pub-img-default" />
-          <img src="images/resmaster.png" alt="ResMaster" class="pub-img-hover" />
-        </div>
-        <div class="publication-content">
-          <div class="publication-title">ResMaster: Mastering High-Resolution Image Generation via Structural and Fine-Grained Guidance</div>
-          <div class="publication-authors">Shuwei Shi, Wenbo Li, <span class="author-name">Yuechen Zhang</span>, Jingwen He, Biao Gong, Yinqiang Zheng</div>
-          <div class="publication-venue">AAAI, 2025</div>
-          <div class="publication-links">
-            <a href="https://arxiv.org/abs/2406.16476">arXiv</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Make-Your-Video -->
-      <div class="publication-item">
-        <div class="publication-image">
-          <img src="images/make-your-video.gif" alt="Make-Your-Video" class="pub-img-default" />
-          <img src="images/make-your-video.gif" alt="Make-Your-Video" class="pub-img-hover" />
-        </div>
-        <div class="publication-content">
-          <div class="publication-title">Make-Your-Video: Customized Video Generation Using Textual and Structural Guidance</div>
-          <div class="publication-authors">Jinbo Xing, Menghan Xia, Yuxin Liu, <span class="author-name">Yuechen Zhang</span>, Yong Zhang, Yingqing He, Hanyuan Liu, Haoxin Chen, Xiaodong Cun, Xintao Wang, Ying Shan, Tien-Tsin Wong</div>
-          <div class="publication-venue">TVCG, 2025</div>
-          <div class="publication-links">
-            <a href="https://www.computer.org/csdl/journal/tg/2025/02/10436391/1UwVf2MBnby">Paper</a> /
-            <a href="https://arxiv.org/abs/2306.00943">arXiv</a> /
-            <a href="https://doubiiu.github.io/projects/Make-Your-Video/">Project</a> /
-            <a href="https://github.com/AILab-CVC/Make-Your-Video">Code</a>
-          </div>
-          <div class="publication-desc">Customized video generation using textual and structural guidance.</div>
-        </div>
-      </div>
-
-
-      <!-- CodeTalker -->
-      <div class="publication-item">
-        <div class="publication-image">
-          <img src="images/codetalker.png" alt="CodeTalker" class="pub-img-default" />
-          <video class="pub-img-hover" muted autoplay loop>
-            <source src="images/codetalker_video.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="publication-content">
-          <div class="publication-title">CodeTalker: Speech-Driven 3D Facial Animation with Discrete Motion Prior</div>
-          <div class="publication-authors">Jinbo Xing, Menghan Xia, <span class="author-name">Yuechen Zhang</span>, Xiaodong Cun, Jue Wang, Tien-Tsin Wong</div>
-          <div class="publication-venue">CVPR, 2023</div>
-          <div class="publication-links">
-            <a href="https://arxiv.org/abs/2301.02379">arXiv</a> /
-            <a href="https://doubiiu.github.io/projects/codetalker/">Project</a> /
-            <a href="https://github.com/Doubiiu/CodeTalker">Code</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- KDiffusion -->
-      <div class="publication-item">
-        <div class="publication-image">
-          <img src="images/kdiffusion.png" alt="KDiffusion" class="pub-img-default" />
-          <img src="images/kdiffusion.png" alt="KDiffusion" class="pub-img-hover" />
-        </div>
-        <div class="publication-content">
-          <div class="publication-title">Progressively Knowledge Distillation via Re-parameterizing Diffusion Reverse Process</div>
-          <div class="publication-authors">Xufeng Yao, Fanbin Lu, <span class="author-name">Yuechen Zhang</span>, Xinyun Zhang, Wenqian Zhao, Bei Yu</div>
-          <div class="publication-venue">AAAI, 2024</div>
-          <div class="publication-links">
-            <a href="https://www.cse.cuhk.edu.hk/~byu/papers/C199-AAAI2024-KDiffusion.pdf">Paper</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- PCL -->
-      <div class="publication-item">
-        <div class="publication-image">
-          <img src="images/pcl-default.png" alt="PCL" class="pub-img-default" />
-          <img src="images/pcl.png" alt="PCL" class="pub-img-hover" />
-        </div>
-        <div class="publication-content">
-          <div class="publication-title">PCL: Proxy-based Contrastive Learning for Domain Generalization</div>
-          <div class="publication-authors">Xufeng Yao, Yang Bai, Xinyun Zhang, <span class="author-name">Yuechen Zhang</span>, Qi Sun, Ran Chen, Ruiyu Li, Bei Yu</div>
-          <div class="publication-venue">CVPR, 2022</div>
-          <div class="publication-links">
-            <a href="https://openaccess.thecvf.com/content/CVPR2022/papers/Yao_PCL_Proxy-Based_Contrastive_Learning_for_Domain_Generalization_CVPR_2022_paper.pdf">Paper</a> /
-            <a href="https://github.com/yaoxufeng/PCL-Proxy-based-Contrastive-Learning-for-Domain-Generalization">Code</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Flow-Aware Video-to-Video Synthesis -->
-      <div class="publication-item">
-        <div class="publication-image">
-          <video class="pub-img-hover" muted autoplay loop>
-            <source src="images/FVI.mp4" type="video/mp4">
-          </video>
-          <video class="pub-img-default" muted autoplay loop>
-            <source src="images/FVI.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="publication-content">
-          <div class="publication-title">Flow-aware Synthesis: A Generic Motion Model for Video Frame Interpolation</div>
-          <div class="publication-authors">Jinbo Xing*, Wenbo Hu*, <span class="author-name">Yuechen Zhang</span>, Tien-Tsin Wong</div>
-          <div class="publication-venue">Computational Visual Media (CVM), 2021</div>
-          <div class="publication-links">
-            <a href="https://link.springer.com/article/10.1007/s41095-021-0208-x">Paper</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-    <!-- 教育与工作经历 Section -->
-    <section id="education" class="education-section">
-      <h2 class="section-title">Education & Work Experience</h2>
-      <div class="education-list">
-        <div class="edu-block">
-          <div class="edu-header">
-            <span class="edu-school">The Chinese University of Hong Kong</span>
-            <span class="edu-location">Hong Kong</span>
-          </div>
-          <div class="edu-detail">
-            <span class="edu-degree">Doctor of Philosophy, Computer Science.</span>
-            <span class="edu-time">Aug 2021 - Dec 2025 (expected)</span>
-          </div>
-          <div class="edu-desc">Supervisor: Prof. Jia Jiaya, Prof. Eric Lo</div>
-          <div class="edu-detail">
-            <span class="edu-degree">Bachelor of Computer Science</span>
-            <span class="edu-time">Sep 2016 - Jul 2021</span>
-          </div>
-          <div class="edu-desc">First Class Honour, ELITE Stream</div>
-        </div>
-        <div class="edu-block">
-          <div class="edu-header">
-            <span class="edu-school">Nanyang Technological University</span>
-            <span class="edu-location">Singapore</span>
-          </div>
-          <div class="edu-detail">
-            <span class="edu-degree">[Exchange] GEM Trailblazer Exchange Program</span>
-            <span class="edu-time">Jan 2019 - May 2019</span>
-          </div>
-        </div>
-        <div class="edu-block">
-          <div class="edu-header">
-            <span class="edu-school">Tsinghua University</span>
-            <span class="edu-location">Beijing, China</span>
-          </div>
-          <div class="edu-detail">
-            <span class="edu-degree">[Exchange] Yao Class Summer Program</span>
-            <span class="edu-time">Jul 2019 - Aug 2019</span>
-          </div>
-        </div>
-      </div>
-      <div class="work-list">
-        <div class="work-block">
-          <div class="work-header">
-            <span class="work-company">Kling, Kuaishou</span>
-            <span class="work-location">Shenzhen, China</span>
-          </div>
-          <div class="work-detail">
-            <span class="work-title">Research Internship</span>
-            <span class="work-time">Feb 2025 - June 2025</span>
-          </div>
-          <div class="work-desc">Research on efficient video generation.</div>
-        </div>
-        <div class="work-block">
-          <div class="work-header">
-            <span class="work-company">LightSpeed, Tencent</span>
-            <span class="work-location">Hong Kong</span>
-          </div>
-          <div class="work-detail">
-            <span class="work-title">Research Internship</span>
-            <span class="work-time">Feb 2024 - Jul 2024</span>
-          </div>
-          <div class="work-desc">Research on interactive video generation and customization.</div>
-        </div>
-        <div class="work-block">
-          <div class="work-header">
-            <span class="work-company">SmartMore</span>
-            <span class="work-location">Hong Kong</span>
-          </div>
-          <div class="work-detail">
-            <span class="work-title">Work Study Internship</span>
-            <span class="work-time">Jan 2020 - Jul 2025</span>
-          </div>
-          <div class="work-desc">Research on image segmentation on real-world industry projects, including defect detection and chip circuit high-precision instance segmentation. Developing an algorithm for 2D Datamatrix code recognition and decoding.</div>
-        </div>
-      </div>
     </section>
 
-    <!-- AWARDS & COMMUNITY CONTRIBUTIONS Section -->
-    <section id="awards" class="awards-section">
-      <h2 class="section-title">Awards & Community Contributions</h2>
-      <ul class="awards-list">
-        <li>CUHK ELITE Stream Scholarship, 2016-2017, 2017-2018</li>
-        <li>CUHK CSE Academic Outstanding Award, 2017-2018, 2018-2019, 2019-2020</li>
-        <li>CUHK Faculty of Engineering, Dean's List, 2016-2017, 2017-2018</li>
-        <li>CWChu College Exchange Scholarship, 2018-2019</li>
-        <li>CWChu College Scholarships for Academic Excellence, 2017-2018, 2018-2019, 2019-2020</li>
-        <li>Teaching Assistant: CSCI3280 Intro. to Multimedia, ESTR4999 Final Year Project, CSCI3250/3251: Computer and Society.</li>
-        <li>Conference Reviewer: CVPR, NeurIPS, ICCV, ECCV, ICLR, AAAI</li>
-      </ul>
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Research</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <img src="https://placehold.co/600x400/3498db/white?text=Project+1" alt="Project 1" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Pharmacological Modulation of Fear & Attention</h3>
+                        <p class="project-desc">Investigating how Losartan and Vasopressin modulate human fear response and attention through eye-tracking.</p>
+                        <div class="project-tags">
+                            <span class="tag">Eye-Tracking</span>
+                            <span class="tag">Pharmacology</span>
+                            <span class="tag">GLMM</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" onclick="openModal('modal1')">View Details</a>
+                            <a href="https://www.medrxiv.org/content/10.1101/2025.05.18.25327885v1" class="project-link">Preprint</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <img src="https://placehold.co/600x400/e74c3c/white?text=Project+2" alt="Project 2" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Neural Mechanisms of Looming Threat</h3>
+                        <p class="project-desc">fMRI study investigating sex-specific neural dynamics of threat processing in females.</p>
+                        <div class="project-tags">
+                            <span class="tag">fMRI</span>
+                            <span class="tag">Threat Processing</span>
+                            <span class="tag">Gender Differences</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" onclick="openModal('modal2')">View Details</a>
+                            <a href="#" class="project-link">In Progress</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <img src="https://placehold.co/600x400/2ecc71/white?text=Project+3" alt="Project 3" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Computational Modeling of Threat Response</h3>
+                        <p class="project-desc">Developing novel computational models to identify threat-response phenotypes and differentiate drug effects.</p>
+                        <div class="project-tags">
+                            <span class="tag">Computational Modeling</span>
+                            <span class="tag">HMM</span>
+                            <span class="tag">FPCA</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" onclick="openModal('modal3')">View Details</a>
+                            <a href="#" class="project-link">In Progress</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <!-- Collaborations Section -->
+    <section id="collaborations" class="collaborations">
+        <div class="container">
+            <h2 class="section-title">Collaborative Research</h2>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <h3 class="pub-title">Effects of exogenous oxytocin on human brain function are regulated by oxytocin gene expression</h3>
+                    <p class="pub-authors">Wang, J., Gan, X., Han, M., Dong, W., He, J., Fu, K., ... & Becker, B.</p>
+                    <p class="pub-venue">medRxiv, 2025-08</p>
+                    <a href="https://www.medrxiv.org/content/10.1101/2025.08.24.25334303v1" class="pub-link">View Preprint</a>
+                </li>
+                <li class="pub-item">
+                    <h3 class="pub-title">Neural systems underlying autobiographical memory dysregulations in depressive and at-risk individuals</h3>
+                    <p class="pub-authors">Cheng, C., Tsang, M., Han, M., Zhang, J., Maes, M., Klugah-Brown, B., ... & Becker, B.</p>
+                    <p class="pub-venue">medRxiv, 2025-04</p>
+                    <a href="https://www.medrxiv.org/content/10.1101/2025.04.06.25325353v1" class="pub-link">View Preprint</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <h3>Han Mengfan</h3>
+            <p>Master Student in Applied Psychology</p>
+            <div class="social-links">
+                <a href="mailto:waichiputao@163.com"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="ai ai-google-scholar"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>© 2023 Han Mengfan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Project Modals -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal1')">&times;</span>
+            <h2>Pharmacological Modulation of Fear & Attention</h2>
+            <p>This project investigated how Losartan and Vasopressin modulate human fear response and attention through eye-tracking. We collected multimodal data from 117 participants under pharmacological intervention.</p>
+            
+            <div class="modal-images">
+                <img src="https://placehold.co/400x300/3498db/white?text=Pupil+Analysis" alt="Pupil Analysis" class="modal-img">
+                <img src="https://placehold.co/400x300/3498db/white?text=HMM+Model" alt="HMM Model" class="modal-img">
+            </div>
+            
+            <h3>Key Findings:</h3>
+            <ul>
+                <li>Losartan enhances post-error adaptive control through trial-based learning</li>
+                <li>AVP phase-specifically modulates pupillary-saccade coordination during threat processing</li>
+                <li>Novel computational models successfully differentiated drug effects on threat-response phenotypes</li>
+            </ul>
+            
+            <a href="https://www.medrxiv.org/content/10.1101/2025.05.18.25327885v1" class="btn">View Preprint</a>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal2')">&times;</span>
+            <h2>Neural Mechanisms of Looming Threat</h2>
+            <p>fMRI study investigating sex-specific neural dynamics of threat processing in females. Current progress: 14/40 participants acquired.</p>
+            
+            <img src="https://placehold.co/800x400/e74c3c/white?text=fMRI+Analysis" alt="fMRI Analysis" class="modal-img" style="width: 100%;">
+            
+            <h3>Methodology:</h3>
+            <p>Using fMRI to study gender-specific threat processing neural dynamics. The study focuses on how males and females differentially process looming threats at the neural level.</p>
+            
+            <a href="#" class="btn">Manuscript in Preparation</a>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal3')">&times;</span>
+            <h2>Computational Modeling of Threat Response</h2>
+            <p>Developing novel computational models to identify threat-response phenotypes and differentiate drug effects.</p>
+            
+            <img src="https://placehold.co/800x400/2ecc71/white?text=Computational+Model" alt="Computational Model" class="modal-img" style="width: 100%;">
+            
+            <h3>Approach:</h3>
+            <p>We developed an FPCA-Cluster-HMM model to identify threat-response phenotypes and differentiate drug effects. This approach allows us to capture the dynamic nature of threat processing and how it's modulated by pharmacological interventions.</p>
+            
+            <a href="#" class="btn">Manuscript in Preparation</a>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside content
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        }
+    </script>
 </body>
 </html>
