@@ -28,27 +28,36 @@
         .header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center; /* 改为 center 实现垂直居中对齐 */
             margin-bottom: 4rem;
             gap: 3rem;
         }
-
+        
         .intro {
             flex: 2;
             padding: 2rem;
             background: white;
             border-radius: 15px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;           /* 添加 */
+            flex-direction: column;  /* 添加 */
+            justify-content: center; /* 添加 */
+            height: 100%;           /* 添加 */
         }
-
+        
         .profile-container {
             flex: 1;
+            display: flex;           /* 添加 */
+            align-items: center;     /* 添加 */
+            justify-content: center; /* 添加 */
         }
-
+        
         .profile-img {
             width: 100%;
+            height: auto;            /* 添加 */
             border-radius: 15px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            object-fit: cover;       /* 添加 */
         }
 
         .intro h1 {
