@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Han Mengfan's Research Portfolio</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥥</text></svg>">
     <style>
         * {
             margin: 0;
@@ -183,6 +184,101 @@
             border-radius: 2px;
         }
 
+        .project-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .overview-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-left: 5px solid #667eea;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .overview-card::after {
+            content: '🔍 Click to view workflow';
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 0.85rem;
+            color: #667eea;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-weight: 600;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        .overview-card:hover::after {
+            opacity: 1;
+        }
+
+        .overview-card h3 {
+            color: #2d3748;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .overview-card h4 {
+            color: #667eea;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .overview-card p {
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .overview-card .stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .overview-card .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .overview-card .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .overview-card .stat-label {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-top: 0.25rem;
+        }
+
+        .subsection-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin: 3rem 0 1.5rem 0;
+            padding-left: 1rem;
+            border-left: 4px solid #667eea;
+        }
+
         .project-card {
             background: white;
             border-radius: 20px;
@@ -304,6 +400,97 @@
             transform: translateX(5px);
         }
 
+        /* Floating Window */
+        .float-window {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            z-index: 1001;
+            max-width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: floatIn 0.3s ease;
+        }
+
+        @keyframes floatIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .float-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .float-window-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .float-window-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d3748;
+        }
+
+        .float-close-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #f7fafc;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            font-size: 1.5rem;
+            color: #718096;
+        }
+
+        .float-close-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .float-window-content {
+            padding: 2rem;
+        }
+
+        .float-window-content img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
         /* Modal */
         .modal {
             display: none;
@@ -317,11 +504,6 @@
             overflow-y: auto;
             backdrop-filter: blur(10px);
             animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         .modal-content {
@@ -353,10 +535,16 @@
 
         .image-caption {
             color: white;
-            text-align: center;
-            margin: 1.5rem 0;
-            font-size: 1.2rem;
+            text-align: left;
+            margin: 1.5rem auto;
+            max-width: 1200px;
+            font-size: 1.1rem;
             font-weight: 500;
+            line-height: 1.8;
+            padding: 1.5rem 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            white-space: pre-line;
         }
 
         .close {
@@ -489,6 +677,38 @@
                 font-size: 1.5rem;
             }
 
+            .project-overview {
+                grid-template-columns: 1fr;
+            }
+
+            .overview-card {
+                padding: 1.5rem;
+            }
+
+            .overview-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .overview-card h4 {
+                font-size: 1rem;
+            }
+
+            .overview-card::after {
+                font-size: 0.75rem;
+                top: 0.75rem;
+                right: 1rem;
+            }
+
+            .overview-card .stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .subsection-title {
+                font-size: 1.1rem;
+                margin: 2rem 0 1rem 0;
+            }
+
             .project-img-container {
                 padding-top: 100%; /* 1:1 Aspect Ratio for mobile */
             }
@@ -526,10 +746,51 @@
                 width: 40px;
                 height: 40px;
             }
+
+            .image-caption {
+                font-size: 0.95rem;
+                padding: 1rem 1.5rem;
+                line-height: 1.7;
+            }
+
+            .float-window {
+                max-width: 95%;
+                max-height: 85vh;
+            }
+
+            .float-window-header {
+                padding: 1rem 1.5rem;
+            }
+
+            .float-window-title {
+                font-size: 1.1rem;
+            }
+
+            .float-window-content {
+                padding: 1.5rem;
+            }
+
+            .float-close-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Floating Window for Project Overview -->
+    <div id="floatOverlay" class="float-overlay"></div>
+    <div id="floatWindow" class="float-window">
+        <div class="float-window-header">
+            <div class="float-window-title" id="floatTitle">Project Workflow</div>
+            <button class="float-close-btn" id="floatCloseBtn">&times;</button>
+        </div>
+        <div class="float-window-content" id="floatContent">
+            <!-- Image will be inserted here -->
+        </div>
+    </div>
+
     <!-- Modal -->
     <div id="imageModal" class="modal">
         <span class="close">&times;</span>
@@ -543,7 +804,7 @@
         <div class="header">
             <div class="intro">
                 <h1>Hi! I am Han Mengfan</h1>
-                <p>I am a master student at UESTC, advised by Prof. Benjamin Becker. My research focuses on pharmacological modulation of human fear and attention using eye-tracking and fMRI methods.</p>
+                <p>I am a master student at <a href="https://en.uestc.edu.cn/" target="_blank" style="color: #667eea; text-decoration: none; font-weight: 600;">UESTC</a>, advised by Prof. <a href="https://scholar.google.com/citations?hl=en&user=UmsTIVAAAAAJ&view_op=list_works" target="_blank" style="color: #667eea; text-decoration: none; font-weight: 600;">Benjamin Becker</a>. My research focuses on pharmacological modulation of human fear and attention using eye-tracking and fMRI methods.</p>
                 <p>I am passionate about investigating neural and cognitive mechanisms underlying human behavior and mental processes.</p>
                 <div class="action-buttons">
                     <a href="mailto:waichiputao@163.com" class="btn btn-primary">Email Me</a>
@@ -558,7 +819,54 @@
         <!-- Projects Section -->
         <div class="project-section">
             <h2 class="section-title">Research Projects | 研究项目</h2>
-            <!-- Project 1 -->
+            
+            <!-- Project Overview -->
+            <div class="project-overview">
+                <!-- Main Project 1: Eye-Tracking Study -->
+                <div class="overview-card" data-project-overview="proj1">
+                    <h3>Project 1: Eye-Tracking Study</h3>
+                    <h4>项目一：眼动追踪研究</h4>
+                    <p><strong>Pharmacological Interventions in Fear and Attention Modulation</strong></p>
+                    <p style="color: #a0aec0;">基于眼动追踪的药理学干预研究</p>
+                    <p>This project investigates how vasopressin and losartan modulate human fear and attention responses through eye-tracking methodologies. The research comprises three complementary sub-studies that examine distinct aspects of threat processing and attentional control.</p>
+                    <p style="color: #718096; font-size: 0.95rem;">该项目通过眼动追踪方法探讨加压素和氯沙坦对人类恐惧与注意反应的调控作用，包含三个互补的子研究，分别考察威胁加工和注意控制的不同方面。</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-value">117</span>
+                            <span class="stat-label">Participants | 被试</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">3</span>
+                            <span class="stat-label">Sub-studies | 子研究</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Project 2: fMRI Study -->
+                <div class="overview-card" data-project-overview="proj2">
+                    <h3>Project 2: fMRI Study</h3>
+                    <h4>项目二：功能磁共振成像研究</h4>
+                    <p><strong>Neural Mechanisms of Looming Threat Processing</strong></p>
+                    <p style="color: #a0aec0;">迫近威胁加工的神经机制研究</p>
+                    <p>This ongoing fMRI study aims to reveal the neural mechanisms underlying looming threat processing. Using advanced neuroimaging techniques, we investigate how the brain processes and responds to approaching threats.</p>
+                    <p style="color: #718096; font-size: 0.95rem;">这项进行中的fMRI研究旨在揭示恐惧逼近过程的神经机制，通过先进的神经影像技术探讨大脑如何处理和应对迫近的威胁。</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-value">40</span>
+                            <span class="stat-label">Planned N | 计划被试数</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">Jun 2026</span>
+                            <span class="stat-label">Expected | 预期完成</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sub-studies Section -->
+            <h3 class="subsection-title">Project 1 Sub-studies | 项目一子研究</h3>
+            
+            <!-- Sub-study 1 -->
             <div class="project-card">
                 <div class="project-img-container" data-project="1">
                     <picture>
@@ -567,40 +875,39 @@
                     </picture>
                 </div>
                 <div class="project-details">
-                    <h2 class="project-title">Research on Losartan and AVP Response Patterns<br><small style="font-size: 0.85em; color: #718096;">Losartan 和 AVP 的响应模式研究</small></h2>
-                    <p>Investigating the distinct response patterns of Losartan and AVP during threat approach processes.<br>
-                    <span style="color: #a0aec0;">尝试找到 Losartan 和 AVP 在威胁逼近过程中各自的响应模式特点。</span></p>
+                    <h2 class="project-title">Distinct Phenotypes of Looming Threat Responses Revealed by Losartan and Vasopressin<br><small style="font-size: 0.85em; color: #718096;">氯沙坦与血管加压素揭示出不同的迫近威胁反应表型</small></h2>
+                    <!-- <p>Investigating the distinct response patterns of Losartan and AVP during threat approach processes.<br> -->
+                    <span style="color: #a0aec0;">Submitted to PLOS Biology, under review.</span></p>
                     <a href="https://www.medrxiv.org/content/10.1101/2025.05.18.25327885v1" class="project-link">View Preprint →</a>
                 </div>
             </div>
 
-            <!-- Project 2 -->
+            <!-- Sub-study 2 -->
             <div class="project-card">
                 <div class="project-img-container" data-project="2">
                     <picture>
                         <source media="(max-width: 768px)" srcset="image_fran/work2_ver.png">
-                        <img src="image_fran/work2.png" alt="Project 2" class="project-img">
+                        <img src="image_fran/work2.png" alt="Sub-study 2" class="project-img">
                     </picture>
                 </div>
                 <div class="project-details">
-                    <h2 class="project-title">AVP Specific Regulation Study<br><small style="font-size: 0.85em; color: #718096;">AVP 的特异性调节作用研究</small></h2>
-                    <p>Investigating the specific regulatory effects of Arginine Vasopressin (AVP) on neural and behavioral responses.<br>
-                    <span style="color: #a0aec0;">研究加压素 (AVP) 对神经和行为反应的特异性调节作用。</span></p>
+                    <h2 class="project-title">Vasopressin Stabilizes Autonomic-Attentional Dynamics to Optimize Threat Monitoring during Anticipatory Processing<br><small style="font-size: 0.85em; color: #718096;">血管加压素稳定自主-注意动力学以优化迫近威胁监测期间的预期处理</small></h2>
+                    <p><span style="color: #a0aec0;">Under preparation for submission.</span></p>
                 </div>
             </div>
 
-            <!-- Project 3 -->
+            <!-- Sub-study 3 -->
             <div class="project-card">
                 <div class="project-img-container" data-project="3">
                     <picture>
                         <source media="(max-width: 768px)" srcset="image_fran/work1_ver.png">
-                        <img src="image_fran/work1.png" alt="Project 3" class="project-img">
+                        <img src="image_fran/work1.png" alt="Sub-study 3" class="project-img">
                     </picture>
                 </div>
                 <div class="project-details">
-                    <h2 class="project-title">Losartan Specific Regulation Study<br><small style="font-size: 0.85em; color: #718096;">Losartan 的特异性调节作用研究</small></h2>
-                    <p>Examining the specific regulatory effects of Losartan. Manuscript under revision, scheduled for submission in October 2025.<br>
-                    <span style="color: #a0aec0;">研究 Losartan 的特异性调节作用。论文修改中，预约 2025 年 10 月投递。</span></p>
+                    <h2 class="project-title">Angiotensin II Differentially Modulates Top-Down and Bottom-Up Attention Control: Evidence from Saccadic Eye Movements<br><small style="font-size: 0.85em; color: #718096;">Angiotensin II 差异化调节自上而下和自下而上的注意控制：来自扫视眼动的证据</small></h2>
+                    <p><span style="color: #a0aec0;">Manuscript under revision, scheduled for submission in October 2025.</span><br>
+                    <span style="color: #a0aec0;">论文修改中，预约 2025 年 10 月投递。</span></p>
                 </div>
             </div>
         </div>
@@ -609,12 +916,15 @@
         <div class="collaborations">
             <h2>Research Collaborations | 合作研究</h2>
             <div class="collaboration-item">
-                <p>Wang, J., Gan, X., Han, M., et al. (2025). Effects of exogenous oxytocin on human brain function are regulated by oxytocin gene expression: A meta-analysis of 20 years of oxytocin neuroimaging and transcriptomic analyses.</p>
+                <p>Wang, J., Gan, X., <strong>Han, M.</strong>, et al. (2025). Effects of exogenous oxytocin on human brain function are regulated by oxytocin gene expression: A meta-analysis of 20 years of oxytocin neuroimaging and transcriptomic analyses. <em>Under review at Neuroscience and Biobehavioral Reviews.</em></p>
                 <a href="https://www.medrxiv.org/content/10.1101/2025.08.24.25334303v1" class="collaboration-link">View Preprint →</a>
             </div>
             <div class="collaboration-item">
-                <p>Cheng, C., Tsang, M., Han, M., et al. (2025). Neural systems underlying autobiographical memory dysregulations in depressive and at-risk individuals: A neuroimaging meta-analysis.</p>
+                <p>Cheng, C., Tsang, M., <strong>Han, M.</strong>, et al. (2025). Neural systems underlying autobiographical memory dysregulations in depressive and at-risk individuals: A neuroimaging meta-analysis. <em>Under review at Psychological Medicine.</em></p>
                 <a href="https://www.medrxiv.org/content/10.1101/2025.04.06.25325353v1" class="collaboration-link">View Preprint →</a>
+            </div>
+            <div class="collaboration-item">
+                <p>Li, Z., Shen, D., <strong>Han, M.</strong>, Wang, Y., Qin, J., Becker, B., & Xu, X. (2025). Top-down rather than bottom-up attention processing mediates the pathway from childhood trauma exposure to depression in adolescents. <em>Under review at Psychological Medicine.</em></p>
             </div>
         </div>
     </div>
@@ -624,48 +934,148 @@
         const modalContent = document.getElementById('modalContent');
         const closeBtn = document.getElementsByClassName('close')[0];
         const projectContainers = document.querySelectorAll('.project-img-container');
+        
+        const floatWindow = document.getElementById('floatWindow');
+        const floatOverlay = document.getElementById('floatOverlay');
+        const floatContent = document.getElementById('floatContent');
+        const floatTitle = document.getElementById('floatTitle');
+        const floatCloseBtn = document.getElementById('floatCloseBtn');
 
-        const projectImages = {
-            '1': [
+        const projectOverviewImages = {
+            'proj1': [
                 {
-                    src: 'image_fran/Project1.png',
-                    caption: 'Project Overview | 项目概览'
-                },
-                {
-                    src: 'image_fran/pupil.png',
-                    caption: 'Pupil Response Results | 瞳孔响应结果'
-                },
-                {
-                    src: 'image_fran/HMM.png',
-                    caption: 'Hidden Markov Model Results | 马尔科夫链结果'
+                    src: 'image_fran/proj1_pipe.png',
+                    caption: 'Project 1 Workflow | 项目一研究流程'
                 }
             ],
-            '2': [
+            'proj2': [
                 {
-                    src: 'image_fran/Project2.png',
-                    caption: 'AVP Specific Regulatory Effects | AVP 的特异性调节作用'
-                }
-            ],
-            '3': [
-                {
-                    src: 'image_fran/Project3.png',
-                    caption: 'Losartan Specific Regulatory Effects | Losartan 的特异性调节作用'
+                    src: 'image_fran/proj2_pipe.png',
+                    caption: 'Project 2 Workflow | 项目二研究流程'
                 }
             ]
         };
 
+        const projectImages = {
+            '1': [
+                {
+                    src: 'image_fran/work1_1.png',
+                    caption: `Method Overview | 方法概览
+Multimodal Characterization (多模态表征):
+• Behavior: Nonlinear dynamic modeling
+• Pupillometry: Baseline + time-window + FLMM
+• Phenotype Discovery: Dimensionality reduction + hierarchical clustering → 8 phenotypes
+• Dynamic Pattern Decoding: First-order Markov model
+
+行为：非线性动力学建模
+瞳孔测量：基线 + 时间窗 + 函数型线性混合模型 (FLMM)
+表型发现：降维 + 分层聚类 → 8种整合表型
+动态模式解码：一阶马尔可夫模型识别治疗特异性的模式转换路径`
+                },
+                {
+                    src: 'image_fran/work1_2.png',
+                    caption: 'Behavior and Pupil Response Results | 行为和瞳孔响应结果'
+                },
+                {
+                    src: 'image_fran/work1_3.png',
+                    caption: 'Phenotype Discovery | 表型发现'
+                },
+                {
+                    src: 'image_fran/work1_4.png',
+                    caption: 'Overview of Hidden Markov Model Results | 马尔科夫链结果概览'
+                }
+            ],
+            '2': [
+                {
+                    src: 'image_fran/work2_1.png',
+                    caption: ''
+                },
+                {
+                    src: 'image_fran/work2_2.png',
+                    caption: `Method | 方法：
+Eye Movement: Trained a SLIME model with few data to segment head and body, characterizing gaze dispersion via the Shannon entropy.
+Pupil: Pupil response dynamics across baseline, visual processing, and imagery phases were captured by fitting a piecewise linear model.
+Eye-Pupil Coupling: Sliding-window analysis was employed to assess coupling strength, optimal lag and stability.
+
+眼动分析： 基于少量标注样本训练SLIME模型以分割头部与身体，从而通过计算香农熵来量化分布离散性。
+瞳孔分析： 采用分段线性模型拟合瞳孔响应曲线，进而刻画基线期、视觉处理期与想象期的动态变化趋势。
+眼动-瞳孔耦合分析： 采用滑动窗口分析，以评估耦合强度、响应延迟及耦合稳定性。`
+                },
+                {
+                    src: 'image_fran/work2_3.png',
+                    caption: 'Coupling Strength Results | 耦合强度的结果'
+                }
+            ],
+            '3': [
+                {
+                    src: 'image_fran/work3_1.png',
+                    caption: ''
+                },
+                {
+                    src: 'image_fran/work3_2.png',
+                    caption: `Method | 方法：
+Analyzed initial saccade direction error rate, latency, and endpoint error at the group level.
+Incorporated trial history (previous error, stimulus switch) to examine their effects on current saccade at the trial-by-trial level.
+
+在组水平分析了首次眼跳的方向错误率、潜伏期与端点误差。
+在试次水平引入历史变量（前次错误、刺激切换），考察其对当前眼跳的影响。`
+                },
+                {
+                    src: 'image_fran/work3_3.png',
+                    caption: `Main Findings | 主要发现：
+
+Losartan induced a cognitive style shift from "automated" to "controlled." Built upon baseline sex differences, this shift produced contrasting effects: it imposed an "over-control" cost that disrupted automatic efficiency in males, while conferring an "optimization" benefit through enhanced adaptive control in females.
+
+氯沙坦诱发了从"自动化"到"控制性"的认知风格转变。基于既有的性别基线差异，该转变产生了截然不同的行为后果：男性因"过度控制"而损失了其原有的自动化效率；女性则因适应性控制的增强而获得了行为优化。`
+                }
+            ]
+        };
+
+        // Handle project sub-study cards click
         projectContainers.forEach(container => {
             container.addEventListener('click', function() {
                 const projectId = this.getAttribute('data-project');
-                showModal(projectId);
+                showModal(projectImages[projectId]);
             });
         });
 
-        function showModal(projectId) {
+        // Handle project overview cards click - show floating window
+        const overviewCards = document.querySelectorAll('.overview-card');
+        overviewCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const projectId = this.getAttribute('data-project-overview');
+                showFloatWindow(projectOverviewImages[projectId]);
+            });
+        });
+
+        function showFloatWindow(images) {
+            const imageData = images[0]; // 浮窗只显示第一张图片
+            floatContent.innerHTML = '';
+            
+            const imgElement = document.createElement('img');
+            imgElement.src = imageData.src;
+            imgElement.alt = imageData.caption;
+            
+            floatContent.appendChild(imgElement);
+            floatTitle.textContent = imageData.caption;
+            
+            floatOverlay.style.display = 'block';
+            floatWindow.style.display = 'block';
+        }
+
+        function closeFloatWindow() {
+            floatOverlay.style.display = 'none';
+            floatWindow.style.display = 'none';
+        }
+
+        floatCloseBtn.onclick = closeFloatWindow;
+        floatOverlay.onclick = closeFloatWindow;
+
+        function showModal(images) {
             modal.style.display = 'block';
             modalContent.innerHTML = '';
             
-            projectImages[projectId].forEach(img => {
+            images.forEach(img => {
                 const imgElement = document.createElement('img');
                 imgElement.src = img.src;
                 imgElement.className = 'modal-image';
@@ -688,6 +1098,14 @@
                 modal.style.display = 'none';
             }
         }
+
+        // ESC键关闭浮窗和模态框
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeFloatWindow();
+                modal.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
