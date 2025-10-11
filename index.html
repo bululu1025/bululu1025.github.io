@@ -697,6 +697,7 @@
                 font-size: 0.75rem;
                 top: 0.75rem;
                 right: 1rem;
+                opacity: 1; /* Always show on mobile */
             }
 
             .overview-card .stats {
@@ -714,9 +715,15 @@
             }
 
             .project-img-container::after {
-                content: '🔍 Click to View';
+                content: 'Click to View';
                 font-size: 0.85rem;
-                padding: 0.75rem 1.25rem;
+                padding: 0.5rem 0.7rem;
+                opacity: 1; /* Always show on mobile */
+                bottom: 1rem; /* Position at bottom */
+                right: 1rem; /* Position at right */
+                top: auto;
+                left: auto;
+                transform: none;
             }
 
             .project-details {
@@ -754,12 +761,13 @@
             }
 
             .float-window {
-                max-width: 95%;
-                max-height: 85vh;
+                max-width: 98%;
+                width: 98%;
+                max-height: 90vh;
             }
 
             .float-window-header {
-                padding: 1rem 1.5rem;
+                padding: 0.75rem 1rem;
             }
 
             .float-window-title {
@@ -767,13 +775,18 @@
             }
 
             .float-window-content {
-                padding: 1.5rem;
+                padding: 0.5rem;
+            }
+            
+            .float-window-content img {
+                width: 100%;
+                border-radius: 5px;
             }
 
             .float-close-btn {
-                width: 30px;
-                height: 30px;
-                font-size: 1.2rem;
+                width: 28px;
+                height: 28px;
+                font-size: 1.1rem;
             }
         }
     </style>
